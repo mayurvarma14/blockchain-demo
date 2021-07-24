@@ -1,0 +1,378 @@
+{
+	"info": {
+		"_postman_id": "5f1eef58-61ca-4a93-b39d-af31356526b3",
+		"name": "Cryptocurrency",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Node 1: Mine a block",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:6001/mine_block",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6001",
+					"path": [
+						"mine_block"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 2: Mine a block",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:6002/mine_block",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6002",
+					"path": [
+						"mine_block"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 3: Mine a block",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:6003/mine_block",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6003",
+					"path": [
+						"mine_block"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 1: Connect to Nodes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nodes\": [\n        \"http://127.0.0.1:6002\",\n        \"http://127.0.0.1:6003\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:6001/connect_node",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6001",
+					"path": [
+						"connect_node"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 2: Connect to Nodes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nodes\": [\n        \"http://127.0.0.1:6001\",    \n        \"http://127.0.0.1:6003\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:6002/connect_node",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6002",
+					"path": [
+						"connect_node"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 3: Connect to Nodes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nodes\": [\n        \"http://127.0.0.1:6001\",\n        \"http://127.0.0.1:6002\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:6003/connect_node",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6003",
+					"path": [
+						"connect_node"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 1: Add transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sender\": \"John\",\n    \"receiver\": \"Clark\",\n    \"amount\": \"5\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:6001/add_transaction",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6001",
+					"path": [
+						"add_transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 2: Add transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sender\": \"Clark\",\n    \"receiver\": \"Janie\",\n    \"amount\": \"2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:6002/add_transaction",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6002",
+					"path": [
+						"add_transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 3: Add transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sender\": \"Janie\",\n    \"receiver\": \"Clark\",\n    \"amount\": \"7\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:6003/add_transaction",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6003",
+					"path": [
+						"add_transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 1: Replace with longest chain",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:6001/replace_chain",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6001",
+					"path": [
+						"replace_chain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 2: Replace with longest chain",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:6002/replace_chain",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6002",
+					"path": [
+						"replace_chain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 3: Replace with longest chain",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:6003/replace_chain",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6003",
+					"path": [
+						"replace_chain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 1: Get chain data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:6001/get_chain",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6001",
+					"path": [
+						"get_chain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 2: Get chain data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:6002/get_chain",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6002",
+					"path": [
+						"get_chain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Node 3: Get chain data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:6003/get_chain",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "6003",
+					"path": [
+						"get_chain"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

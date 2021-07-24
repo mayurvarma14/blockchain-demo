@@ -1,5 +1,6 @@
 import datetime
 import hashlib
+import sys
 import json
 from flask import Flask, jsonify, request
 import requests
@@ -112,7 +113,7 @@ def mine_block():
     proof = blockchain.proof_of_work(previous_proof)
     previous_hash = blockchain.hash(previous_block)
     blockchain.add_transaction(
-        sender=node_address, receiver='Harrison', amount=1)
+        sender=node_address, receiver=sys.argv[3], amount=1)
     block = blockchain.create_block(proof, previous_hash)
     response = {
         'message': 'Congratulations, you just mined a block!',
@@ -158,14 +159,14 @@ def add_transaction():
 
 # Decentralize
 @app.route('/connect_node', methods=['POST'])
-def conect_node():
+def connect_node():
     json = request.get_json()
     nodes = json.get('nodes')
     if nodes is None:
         return "No node", 400
     for node in nodes:
         blockchain.add_node(node)
-    response = {'message': 'All the nodes are now connected. The mycoin blockchain is now contains the following nodes',
+    response = {'message': f'All the nodes are now connected. The {sys.argv[1]} blockchain is now contains the following nodes',
                 'total_nodes': list(blockchain.nodes)}
     return jsonify(response), 201
 
@@ -182,4 +183,4 @@ def replace_chain():
     return jsonify(response), 200
 
 
-app.run(host='0.0.0.0', port=5000)
+app.run(host='0.0.0.0', port=int(sys.argv[2]))
